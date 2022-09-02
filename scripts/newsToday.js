@@ -9,7 +9,22 @@ const getCategories = () => {
 }
 
 const displayCategories = (categories) => {
-    console.log(categories)
+    // console.log(categories)
+
+    const categoriesContainer = document.getElementById('categories-container');
+    for (let category of categories) {
+        // console.log(category.category_name);
+
+        const li = document.createElement('li');
+        li.classList.add('category-li')
+        li.innerHTML = `${category.category_name}`;
+        categoriesContainer.appendChild(li);
+    }
+
 }
+const getCategoryName = (event) => {
+    console.log(event);
+}
+
 
 getCategories();

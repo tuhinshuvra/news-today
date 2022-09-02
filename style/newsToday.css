@@ -1,3 +1,7 @@
 .categories li {
     list-style: none;
 }
+
+.category-li:hover {
+    color: rgb(128, 128, 239);
+}
