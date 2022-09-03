@@ -11,7 +11,6 @@ const getCategories = () => {
 const displayCategories = (categories) => {
     // console.log(categories)
 
-
     const categoriesContainer = document.getElementById('categories-container');
     let category_id;
     for (let category of categories) {
@@ -40,8 +39,6 @@ const getCategoryId = (event) => {
     categoryNameField.innerText = `${categoryName}`;
     getCategoryNews(categoryId);
 }
-
-
 
 const getCategoryNews = (category_id) => {
     getLoader(true);
