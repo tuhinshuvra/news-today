@@ -50,10 +50,14 @@ footer {
     }
 
     .category-li {
-        font-size: 12px;
+        font-size: 13px;
         text-align: inherit;
         margin-left: 4px;
         /* border-left: 2px solid green; */
+    }
+
+    .news-sm-view {
+        font-size: 12px;
     }
 
 }

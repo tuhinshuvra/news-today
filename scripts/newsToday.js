@@ -94,16 +94,16 @@ const displayCategoryNews = (newsList) => {
                                         <img style="width:50px ;" class=" rounded-circle " src="${img}" alt="">
                                     </div>
                                     <div class=" ">
-                                        <p class=" m-0">${(name != null ? name : "Name Unavailable") || (name != '' ? name : "Name Unavailable")}</p>
-                                        <p class=" m-0">${published_date != null ? published_date : "Date Unavailable"}</p>
+                                        <p class="news-sm-view m-0">${(name != null ? name : "Name Unavailable") || (name != '' ? name : "Name Unavailable")}</p>
+                                        <p class="news-sm-view m-0">${published_date != null ? published_date : "Date Unavailable"}</p>
                                     </div>
                                 </div>
 
                                 <div class="">
                                     <div class=" d-inline"> <i class="fa-regular fa-eye"></i></div>
-                                    <p class=" d-inline">${total_view != null ? total_view : "No Data Available"}</p >
+                                    <p class=" d-inline news-sm-view">${total_view != null ? total_view : "No Data Available"}</p >
                                 </div >
-                                <div class=" d-flex">
+                                <div class=" news-sm-view d-flex ">
                                     <i class="fa-regular fa-star-half-stroke"></i>
                                     <i class="fa-regular fa-star"></i>
                                     <i class="fa-regular fa-star"></i>
@@ -142,7 +142,9 @@ const getNewsDetails = (newsId) => {
 
 const setNewsDetailsModal = (newsDetails) => {
     // console.log(newsDetails[0]);
-    const { title, details, author, thumbnail_url } = newsDetails[0];
+    const newsDetailsList = newsDetails[0];
+    console.log(newsDetailsList);
+    const { details, author, thumbnail_url, title } = newsDetailsList;
     const { img, name, published_date } = author;
 
     const newsTodayModalLabel = document.getElementById('newsTodayModalLabel');
