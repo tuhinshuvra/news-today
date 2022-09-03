@@ -5,3 +5,8 @@
 .category-li:hover {
     color: rgb(128, 128, 239);
 }
+
+.modal-width {
+    /* width: 1200px !important; */
+    --bs-modal-width: 1200px;
+}

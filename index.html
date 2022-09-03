@@ -52,9 +52,12 @@
                     class="categories list-unstyled fw-bolder text-secondary d-flex justify-content-between me-2 ">
                 </ul>
             </div>
-
         </section>
         <!-- categories section end -->
+
+        <section class=" container mt-5 mb-5 ">
+            <h5>4 Item found for categorie International</h5>
+        </section>
     </header>
     <main>
         <section id="newsFound" class=" d-none">
@@ -78,8 +81,8 @@
         <!-- modal show start -->
         <section>
             <!-- Modal -->
-            <div class="modal fade" id="newsTodayModal" tabindex="-1" aria-labelledby="newsTodayModalLabel"
-                aria-hidden="true">
+            <div class="modal  modal-width  fade" id="newsTodayModal" tabindex="-1"
+                aria-labelledby="newsTodayModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -87,6 +90,10 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div id="newsDetails" class="modal-body"></div>
+                        <div class=" d-flex justify-content-end  container ">
+                            <div id="author"></div>
+                            <div id="publish-date"></div>
+                        </div>
                         <div class="modal-footer">
                             <button onclick="setNewsDetails(this)" type="button" class="btn btn-secondary"
                                 data-bs-dismiss="modal">Close</button>

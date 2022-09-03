@@ -140,8 +140,12 @@ const setNewsDetails = (newsDetails) => {
     console.log(title, details, name, published_date, thumbnail_url);
     const newsTodayModalLabel = document.getElementById('newsTodayModalLabel');
     const newsDetailsField = document.getElementById('newsDetails');
+    const authorField = document.getElementById('author');
+    const publishDateField = document.getElementById('publish-date');
     newsTodayModalLabel.innerText = `${title}`;
     newsDetailsField.innerText = `${details}`;
+    authorField.innerText = `Author-${name},`;
+    publishDateField.innerText = ` Published-${published_date}`;
 
 
 }
