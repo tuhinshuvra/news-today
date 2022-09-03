@@ -61,8 +61,9 @@ const displayCategoryNews = (newsList) => {
 
     for (let news of newsList) {
         // console.log(news);
-        const { image_url, details, title, author, total_view } = news;
+        const { image_url, details, title, author, total_view, _id } = news;
         const { img, name, published_date } = author;
+        // const { newsId } = _id;
 
         const catNewsDiv = document.createElement('div');
         catNewsDiv.classList.add('card');
@@ -101,7 +102,7 @@ const displayCategoryNews = (newsList) => {
                                     <i class="fa-regular fa-star"></i>
                                 </div>
                                 <div>
-                                    <i class="fa-solid fa-arrow-right"></i>
+                                    <button onclick="getNewsDetails('${_id}')"  class="fa-solid fa-arrow-right" data-bs-toggle="modal" data-bs-target="#newsTodayModal"></button>
                                 </div>
 
                             </div >
@@ -111,7 +112,6 @@ const displayCategoryNews = (newsList) => {
         categoryNewsContainer.appendChild(catNewsDiv);
     }
     getLoader(false);
-
 }
 
 const getLoader = (isLoading) => {
@@ -123,6 +123,29 @@ const getLoader = (isLoading) => {
     }
 }
 
+const getNewsDetails = (newsId) => {
+    // console.log(newsId);
+    fetch(`https://openapi.programming-hero.com/api/news/${newsId}`)
+        .then(response => response.json())
+        .then(data => setNewsDetails(data.data))
+        .catch(error => console.log(error))
+}
+
+const setNewsDetails = (newsDetails) => {
+    console.log(newsDetails[0]);
+    const { title, details, author, thumbnail_url } = newsDetails[0];
+    const { img, name, published_date } = author;
+
+
+    console.log(title, details, name, published_date, thumbnail_url);
+    const newsTodayModalLabel = document.getElementById('newsTodayModalLabel');
+    const newsDetailsField = document.getElementById('newsDetails');
+    newsTodayModalLabel.innerText = `${title}`;
+    newsDetailsField.innerText = `${details}`;
+
+
+}
 
 getCategories();
-// element.innerHTML = element.innerHTML + "additional HTML code"
+// category_id  details image_url others_info
+// thumbnail_url title total_view _id 
