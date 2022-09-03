@@ -11,31 +11,39 @@ const getCategories = () => {
 const displayCategories = (categories) => {
     // console.log(categories)
 
+
     const categoriesContainer = document.getElementById('categories-container');
     let category_id;
     for (let category of categories) {
         category_id = category.category_id;
         // console.log(category_id);
 
+
         const li = document.createElement('li');
         const span = document.createElement('span');
         li.classList.add('category-li');
         span.classList.add('d-none');
         li.onclick = function () { getCategoryId(this) };
-        li.innerHTML = `${category.category_name}`;
+        li.innerHTML = `${category.category_name} `;
         span.innerHTML = `${category.category_id}`;
         li.appendChild(span);
         categoriesContainer.appendChild(li);
+
     }
 }
 
 let categoryId;
+let categoryName;
+const categoryNameField = document.getElementById('category-name');
 const getCategoryId = (event) => {
     categoryId = event.children[0].innerText;
-    // return categoryId;
+    categoryName = event.innerText;
+
+    categoryNameField.innerText = `${categoryName}`;
     getCategoryNews(categoryId);
-    // console.log(categoryId);
 }
+
+
 
 const getCategoryNews = (category_id) => {
     getLoader(true);
@@ -49,6 +57,13 @@ const displayCategoryNews = (newsList) => {
 
     let newListLength;
     newListLength = newsList.length;
+
+    const newsCountField = document.getElementById('news-count');
+    newsCountField.innerText = `${newListLength} news found in`;
+
+    // console.log(`newListLength = `, newListLength,);
+
+    // console.log(newsList);
     const newsFound = document.getElementById('newsFound');
     if (newListLength === 0) {
         newsFound.classList.remove('d-none');
@@ -132,12 +147,10 @@ const getNewsDetails = (newsId) => {
 }
 
 const setNewsDetails = (newsDetails) => {
-    console.log(newsDetails[0]);
+    // console.log(newsDetails[0]);
     const { title, details, author, thumbnail_url } = newsDetails[0];
     const { img, name, published_date } = author;
 
-
-    console.log(title, details, name, published_date, thumbnail_url);
     const newsTodayModalLabel = document.getElementById('newsTodayModalLabel');
     const newsDetailsField = document.getElementById('newsDetails');
     const authorField = document.getElementById('author');
@@ -146,10 +159,6 @@ const setNewsDetails = (newsDetails) => {
     newsDetailsField.innerText = `${details}`;
     authorField.innerText = `Author-${name},`;
     publishDateField.innerText = ` Published-${published_date}`;
-
-
 }
 
 getCategories();
-// category_id  details image_url others_info
-// thumbnail_url title total_view _id 
