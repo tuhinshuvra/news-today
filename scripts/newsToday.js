@@ -63,24 +63,24 @@ const displayCategoryNews = (newsList) => {
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title fw-bold ">${title}</h5>
-                                <p class="card-text">${details.length > 200 ? details.slice(0, 200) + '...' : details}</p>                                
+                                <h6 class="card-title fw-bold ">${title}</h6>
+                                <p class="card-text">${details.length > 180 ? details.slice(0, 180) + '...' : details}</p>                                
                             </div>
 
                             <div class=" card-body d-flex justify-content-between align-items-center">
-                                <div class=" d-flex justify-content-between align-items-center">
+                                <div class=" d-flex justify-content-center align-items-center ">
                                     <div>
                                         <img style="width:50px ;" class=" rounded-circle " src="${img}" alt="">
                                     </div>
-                                    <div class="">
-                                        <p>${name}</p>
-                                        <p>${published_date}</p>
+                                    <div class=" ">
+                                        <p class=" m-0">${name}</p>
+                                        <p class=" m-0">${published_date}</p>
                                     </div>
                                 </div>
 
-                                <div class=" d-flex justify-content-between">
-                                    <div> <i class="fa-regular fa-eye"></i></div>
-                                    <p>${total_view}</p>
+                                <div class="">
+                                    <div class=" d-inline"> <i class="fa-regular fa-eye"></i></div>
+                                    <p class=" d-inline">${total_view}</p>
                                 </div>
                                 <div class=" d-flex">
                                     <i class="fa-regular fa-star-half-stroke"></i>
