@@ -73,15 +73,15 @@ const displayCategoryNews = (newsList) => {
                                         <img style="width:50px ;" class=" rounded-circle " src="${img}" alt="">
                                     </div>
                                     <div class=" ">
-                                        <p class=" m-0">${name}</p>
-                                        <p class=" m-0">${published_date}</p>
+                                        <p class=" m-0">${name != null ? name : "Name Unavailable"}</p>
+                                        <p class=" m-0">${published_date != null ? published_date : "Date Unavailable"}</p>
                                     </div>
                                 </div>
 
                                 <div class="">
                                     <div class=" d-inline"> <i class="fa-regular fa-eye"></i></div>
-                                    <p class=" d-inline">${total_view}</p>
-                                </div>
+                                    <p class=" d-inline">${total_view != null ? total_view : "No Data Available"}</p >
+                                </div >
                                 <div class=" d-flex">
                                     <i class="fa-regular fa-star-half-stroke"></i>
                                     <i class="fa-regular fa-star"></i>
@@ -93,9 +93,9 @@ const displayCategoryNews = (newsList) => {
                                     <i class="fa-solid fa-arrow-right"></i>
                                 </div>
 
-                            </div>
-                        </div>
-        </div>
+                            </div >
+                        </div >
+        </div >
     `;
         categoryNewsContainer.appendChild(catNewsDiv);
     }
