@@ -13,7 +13,9 @@ const displayCategories = (categories) => {
 
     const categoriesContainer = document.getElementById('categories-container');
     let category_id;
-    for (let category of categories) {
+
+    categories.forEach(category => {
+        // for (let category of categories) {
         category_id = category.category_id;
         // console.log(category_id);
 
@@ -26,7 +28,8 @@ const displayCategories = (categories) => {
         span.innerHTML = `${category.category_id}`;
         li.appendChild(span);
         categoriesContainer.appendChild(li);
-    }
+        // }
+    })
 }
 
 let categoryId;
@@ -45,7 +48,8 @@ const getCategoryNews = (category_id) => {
 
     fetch(`https://openapi.programming-hero.com/api/news/category/${category_id}`)
         .then(response => response.json())
-        .then(news => displayCategoryNews(news.data));
+        .then(news => displayCategoryNews(news.data))
+        .catch(error => console.log(error));
 }
 
 const displayCategoryNews = (newsList) => {
@@ -69,7 +73,8 @@ const displayCategoryNews = (newsList) => {
 
     const sorttedList = newsList.sort((a, b) => (a.total_view < b.total_view) ? 1 : (a.total_view === b.total_view) ? ((a.total_view < b.total_view) ? 1 : -1) : -1)
 
-    for (let news of sorttedList) {
+    sorttedList.forEach(news => {
+        // for (let news of sorttedList) {
         // console.log(news);
         const { image_url, details, title, author, total_view, _id } = news;
         const { img, name, published_date } = author;
@@ -119,7 +124,8 @@ const displayCategoryNews = (newsList) => {
         </div >
     `;
         categoryNewsContainer.appendChild(catNewsDiv);
-    }
+        // }
+    })
     getLoader(false);
 }
 
@@ -143,7 +149,7 @@ const getNewsDetails = (newsId) => {
 const setNewsDetailsModal = (newsDetails) => {
     // console.log(newsDetails[0]);
     const newsDetailsList = newsDetails[0];
-    console.log(newsDetailsList);
+    // console.log(newsDetailsList);
     const { details, author, thumbnail_url, title } = newsDetailsList;
     const { img, name, published_date } = author;
 
