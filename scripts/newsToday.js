@@ -73,7 +73,7 @@ const displayCategoryNews = (newsList) => {
     const sorttedList = newsList.sort((a, b) => (a.total_view < b.total_view) ? 1 : (a.total_view === b.total_view) ? ((a.total_view < b.total_view) ? 1 : -1) : -1)
 
     for (let news of sorttedList) {
-        // console.log(news);
+        console.log(news);
         const { image_url, details, title, author, total_view, _id } = news;
         const { img, name, published_date } = author;
 
@@ -97,7 +97,7 @@ const displayCategoryNews = (newsList) => {
                                         <img style="width:50px ;" class=" rounded-circle " src="${img}" alt="">
                                     </div>
                                     <div class=" ">
-                                        <p class=" m-0">${name != null ? name : "Name Unavailable"}</p>
+                                        <p class=" m-0">${(name != null ? name : "Name Unavailable") || (name != '' ? name : "Name Unavailable")}</p>
                                         <p class=" m-0">${published_date != null ? published_date : "Date Unavailable"}</p>
                                     </div>
                                 </div>
