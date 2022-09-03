@@ -36,20 +36,31 @@ const getCategoryId = (event) => {
     getCategoryNews(categoryId);
     // console.log(categoryId);
 }
+
 const getCategoryNews = (category_id) => {
+    getLoader(true);
+
     fetch(`https://openapi.programming-hero.com/api/news/category/${category_id}`)
         .then(response => response.json())
         .then(news => displayCategoryNews(news.data));
 }
 
 const displayCategoryNews = (newsList) => {
-    // console.log(newsList);
+
+    let newListLength;
+    newListLength = newsList.length;
+    const newsFound = document.getElementById('newsFound');
+    if (newListLength === 0) {
+        newsFound.classList.remove('d-none');
+    } else {
+        newsFound.classList.add('d-none');
+    }
 
     const categoryNewsContainer = document.getElementById('category-news-container');
     categoryNewsContainer.innerHTML = '';
 
     for (let news of newsList) {
-        console.log(news);
+        // console.log(news);
         const { image_url, details, title, author, total_view } = news;
         const { img, name, published_date } = author;
 
@@ -99,7 +110,17 @@ const displayCategoryNews = (newsList) => {
     `;
         categoryNewsContainer.appendChild(catNewsDiv);
     }
+    getLoader(false);
 
+}
+
+const getLoader = (isLoading) => {
+    const loader = document.getElementById('loader');
+    if (isLoading) {
+        loader.classList.remove('d-none');
+    } else {
+        loader.classList.add('d-none');
+    }
 }
 
 
