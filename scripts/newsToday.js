@@ -28,7 +28,6 @@ const displayCategories = (categories) => {
         span.innerHTML = `${category.category_id}`;
         li.appendChild(span);
         categoriesContainer.appendChild(li);
-
     }
 }
 
@@ -61,8 +60,6 @@ const displayCategoryNews = (newsList) => {
     const newsCountField = document.getElementById('news-count');
     newsCountField.innerText = `${newListLength} news found in`;
 
-    // console.log(`newListLength = `, newListLength,);
-
     // console.log(newsList);
     const newsFound = document.getElementById('newsFound');
     if (newListLength === 0) {
@@ -74,11 +71,32 @@ const displayCategoryNews = (newsList) => {
     const categoryNewsContainer = document.getElementById('category-news-container');
     categoryNewsContainer.innerHTML = '';
 
-    for (let news of newsList) {
+    var e = document.getElementById("ddlViewBy");
+    var elemenValue = e.options[e.selectedIndex].value;
+    console.log(elemenValue);
+
+    let sorttedList;
+
+    if (elemenValue == 1) {
+        const descendingViewList = newsList.sort((a, b) => (a.total_view > b.total_view) ? 1 : (a.total_view === b.total_view) ? ((a.total_view > b.total_view) ? 1 : -1) : -1)
+        sorttedList = descendingViewList;
+    }
+    if (elemenValue == 2) {
+        const descendingViewList = newsList.sort((a, b) => (a.total_view < b.total_view) ? 1 : (a.total_view === b.total_view) ? ((a.total_view < b.total_view) ? 1 : -1) : -1)
+        sorttedList = descendingViewList;
+    }
+    else {
+        sorttedList = newsList;
+    }
+
+
+
+    for (let news of sorttedList) {
         // console.log(news);
+        // news?.sort((first, second) => (first.total_view > second.total_view ? -1 : 1))
+
         const { image_url, details, title, author, total_view, _id } = news;
         const { img, name, published_date } = author;
-        // const { newsId } = _id;
 
         const catNewsDiv = document.createElement('div');
         catNewsDiv.classList.add('card');
@@ -142,11 +160,11 @@ const getNewsDetails = (newsId) => {
     // console.log(newsId);
     fetch(`https://openapi.programming-hero.com/api/news/${newsId}`)
         .then(response => response.json())
-        .then(data => setNewsDetails(data.data))
+        .then(data => setNewsDetailsModal(data.data))
         .catch(error => console.log(error))
 }
 
-const setNewsDetails = (newsDetails) => {
+const setNewsDetailsModal = (newsDetails) => {
     // console.log(newsDetails[0]);
     const { title, details, author, thumbnail_url } = newsDetails[0];
     const { img, name, published_date } = author;
