@@ -18,7 +18,6 @@ const displayCategories = (categories) => {
         category_id = category.category_id;
         // console.log(category_id);
 
-
         const li = document.createElement('li');
         const span = document.createElement('span');
         li.classList.add('category-li');
@@ -71,30 +70,10 @@ const displayCategoryNews = (newsList) => {
     const categoryNewsContainer = document.getElementById('category-news-container');
     categoryNewsContainer.innerHTML = '';
 
-    var e = document.getElementById("ddlViewBy");
-    var elemenValue = e.options[e.selectedIndex].value;
-    console.log(elemenValue);
-
-    let sorttedList;
-
-    if (elemenValue == 1) {
-        const descendingViewList = newsList.sort((a, b) => (a.total_view > b.total_view) ? 1 : (a.total_view === b.total_view) ? ((a.total_view > b.total_view) ? 1 : -1) : -1)
-        sorttedList = descendingViewList;
-    }
-    if (elemenValue == 2) {
-        const descendingViewList = newsList.sort((a, b) => (a.total_view < b.total_view) ? 1 : (a.total_view === b.total_view) ? ((a.total_view < b.total_view) ? 1 : -1) : -1)
-        sorttedList = descendingViewList;
-    }
-    else {
-        sorttedList = newsList;
-    }
-
-
+    const sorttedList = newsList.sort((a, b) => (a.total_view < b.total_view) ? 1 : (a.total_view === b.total_view) ? ((a.total_view < b.total_view) ? 1 : -1) : -1)
 
     for (let news of sorttedList) {
         // console.log(news);
-        // news?.sort((first, second) => (first.total_view > second.total_view ? -1 : 1))
-
         const { image_url, details, title, author, total_view, _id } = news;
         const { img, name, published_date } = author;
 
